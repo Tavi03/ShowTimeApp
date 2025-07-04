@@ -1,0 +1,36 @@
+{# {{ form_start(form) }} #}
+{#    {{ form_widget(form) }} #}
+{# <button class="btn">{{ button_label|default('Save') }}</button> #}
+{# {{ form_end(form) }} #}
+
+{# {{ form_start(form) }} #}
+{# <div class="row"> #}
+{#    <div class="col"> #}
+{#        {{ form_row(form.name) }} #}
+{#    </div> #}
+{#    <div class="col"> #}
+{#        {{ form_row(form.musicGenre) }} #}
+{#    </div> #}
+{# </div> #}
+{# <button class="btn">{{ button_label|default('Save') }}</button> #}
+{# {{ form_end(form) }} #}
+
+{{ form_start(form, { attr: { class: "space-y-3" } }) }}
+
+<div>
+    {{ form_label(form.name, 'Band Name', { label_attr: { class: 'label' } }) }}
+    {{ form_widget(form.name, { attr: { class: 'input input-bordered ' } }) }}
+    {{ form_errors(form.name) }}
+</div>
+
+<div>
+    {{ form_label(form.musicGenre, 'Genre', { label_attr: { class: 'label' } }) }}
+    {{ form_widget(form.musicGenre, { attr: { class: 'select select-bordered mx-10' } }) }}
+    {{ form_errors(form.musicGenre) }}
+</div>
+
+<div>
+    <button class="btn btn-primary">{{ button_label|default('Save') }}</button>
+</div>
+
+{{ form_end(form) }}

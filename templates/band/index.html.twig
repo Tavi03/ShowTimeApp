@@ -1,32 +1,38 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Hello BandController!{% endblock %}
+{% block title %}Band index{% endblock %}
 
-{% block body %}
-<style>
-    .example-wrapper { margin: 1em auto; max-width: 800px; width: 95%; font: 18px/1.5 sans-serif; }
-    .example-wrapper code { background: #F5F5F5; padding: 2px 6px; }
-</style>
+{% block content %}
+    <h1 class="text-2xl mb-2">Bands</h1>
 
-<div class="example-wrapper">
-    <h1>Hello {{ controller_name }}! ✅</h1>
+    <a href="{{ path('app_band_new') }}" class="btn btn-primary my-2">Create new</a>
 
-    <table>
+    <table class="table">
+        <thead>
         <tr>
-            <th>band name</th>
-            <th>band genre</th>
+            <th>Id</th>
+            <th>Name</th>
+            <th>Genre</th>
+            <th>Actions</th>
         </tr>
-
+        </thead>
+        <tbody>
         {% for band in bands %}
             <tr>
+                <td>{{ band.id }}</td>
+                <td>{{ band.name }}</td>
+                <td>{{ band.musicGenre.name }}</td>
                 <td>
-                    {{ band.name }}
-                </td>
-                <td>
-                    {{ band.musicGenre.value }}
+                    <a href="{{ path('app_band_show', {'id': band.id}) }}" class="btn btn-primary">Show</a>
+                    <a href="{{ path('app_band_edit', {'id': band.id}) }}" class="btn btn-secondary">Edit</a>
+                    {{ include('band/_delete_form.html.twig') }}
                 </td>
             </tr>
+        {% else %}
+            <tr>
+                <td colspan="4">No Records Found</td>
+            </tr>
         {% endfor %}
+        </tbody>
     </table>
-</div>
 {% endblock %}

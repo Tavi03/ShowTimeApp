@@ -1,0 +1,11 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}New Band{% endblock %}
+
+{% block content %}
+    <h1 class="text-2xl mb-2">Create new Band</h1>
+
+    {{ include('band/_form.html.twig') }}
+
+    <a href="{{ path('app_band_index') }}" class="btn btn-primary">Back To List</a>
+{% endblock %}
