@@ -1,31 +1,33 @@
 {{ form_start(form, { attr: { class: "space-y-4" } }) }}
+<div class="flex flex-wrap">
 
-<div>
-    {{ form_label(form.name, 'Festival Name', { label_attr: { class: 'label' } }) }}
-    {{ form_widget(form.name, { attr: { class: 'input input-bordered w-full' } }) }}
+    <div class="mx-2 w-1/3">
+        {{ form_label(form.name, 'Festival Name', { label_attr: { class: 'label' } }) }}
+        {{ form_widget(form.name, { attr: { class: 'input input-bordered w-full' } }) }}
+    </div>
+
+    <div class="mx-2 w-1/3">
+        {{ form_label(form.location, 'Location', { label_attr: { class: 'label' } }) }}
+        {{ form_widget(form.location, { attr: { class: 'input input-bordered w-full' } }) }}
+    </div>
+
+    <div class="mx-2 w-1/3">
+        {{ form_label(form.startDate, 'Start Date', { label_attr: { class: 'label' } }) }}
+        {{ form_widget(form.startDate, { attr: { class: 'input input-bordered w-full' } }) }}
+    </div>
+
+    <div class="mx-2 w-1/3">
+        {{ form_label(form.endDate, 'End Date', { label_attr: { class: 'label' } }) }}
+        {{ form_widget(form.endDate, { attr: { class: 'input input-bordered w-full' } }) }}
+    </div>
+
+    <div class="mx-2 w-1/3">
+        {{ form_label(form.bands, 'Bands', { label_attr: { class: 'label' } }) }}
+        {{ form_widget(form.bands, { attr: { class: 'w-full' } }) }}
+    </div>
+
 </div>
-
-<div>
-    {{ form_label(form.location, 'Location', { label_attr: { class: 'label' } }) }}
-    {{ form_widget(form.location, { attr: { class: 'input input-bordered w-full' } }) }}
-</div>
-
-<div>
-    {{ form_label(form.startDate, 'Start Date', { label_attr: { class: 'label' } }) }}
-    {{ form_widget(form.startDate, { attr: { class: 'input input-bordered w-full' } }) }}
-</div>
-
-<div>
-    {{ form_label(form.endDate, 'End Date', { label_attr: { class: 'label' } }) }}
-    {{ form_widget(form.endDate, { attr: { class: 'input input-bordered w-full' } }) }}
-</div>
-
-<div>
-    {{ form_label(form.bands, 'Bands', { label_attr: { class: 'label' } }) }}
-    {{ form_widget(form.bands, { attr: { class: 'w-full' } }) }}
-</div>
-
-<div>
+<div class="mx-2">
     <button class="btn btn-primary">{{ button_label|default('Save') }}</button>
 </div>
 

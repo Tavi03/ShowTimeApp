@@ -16,6 +16,12 @@ class FestivalRepository extends ServiceEntityRepository
         parent::__construct($registry, Festival::class);
     }
 
+//    public function findPaginated(int $page, int $limit)
+//    {
+//        $offset = ($page - 1) * $limit;
+//        return $this->findBy([], ['startDate' => 'ASC'], $limit, $offset);
+//    }
+
 //    /**
 //     * @return Festival[] Returns an array of Festival objects
 //     */

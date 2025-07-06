@@ -1,0 +1,57 @@
+{{ form_start(form, {'attr': {'class': 'space-y-6'}}) }}
+
+<div>
+    {{ form_label(form.email, 'Email Address', { label_attr: { class: 'label' } }) }}
+
+    {{ form_widget(form.email, { attr: { class: 'input w-full validator' } }) }}
+
+    {% if form.email.vars.errors|length > 0 %}
+        <div class="mt-1">
+            <span class="text-error break-words">
+            {% for error in form.email.vars.errors %}
+                {{ error.message }}
+            {% endfor %}
+            </span>
+        </div>
+    {% endif %}
+</div>
+
+
+<div>
+    {{ form_label(form.fullName, 'Full Name', { label_attr: { class: 'label' } }) }}
+
+    {{ form_widget(form.fullName, { attr: { class: 'input w-full validator' } }) }}
+
+    {% if form.fullName.vars.errors|length > 0 %}
+        <div class="mt-1">
+            <span class="text-error break-words">
+                {% for error in form.fullName.vars.errors %}
+                    {{ error.message }}
+                {% endfor %}
+            </span>
+        </div>
+    {% endif %}
+</div>
+
+<div class="divider"></div>
+
+<div>
+    <button class="btn btn-primary btn-lg w-full" type="submit">
+        <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
+        </svg>
+        Confirm Booking
+    </button>
+</div>
+
+<div class="text-center mt-4">
+    <a href="{{ path('app_home') }}" class="btn btn-ghost btn-sm">
+        <svg class="w-4 h-4 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                  d="M10 19l-7-7m0 0l7-7m-7 7h18"></path>
+        </svg>
+        Back to Festivals
+    </a>
+</div>
+
+{{ form_end(form) }}

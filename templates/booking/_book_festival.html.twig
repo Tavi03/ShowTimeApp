@@ -1,0 +1,5 @@
+<form method="post" action="{{ path('app_booking', {'id': festival.id}) }}"
+      class="inline">
+    <input type="hidden" name="_token" value="{{ csrf_token('festivalId' ~ festival.id) }}">
+    <button class="btn btn-primary">Book</button>
+</form>

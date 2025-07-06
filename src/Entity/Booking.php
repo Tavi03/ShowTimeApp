@@ -4,6 +4,7 @@ namespace App\Entity;
 
 use App\Repository\BookingRepository;
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\Validator\Constraints as Assert;
 
 #[ORM\Entity(repositoryClass: BookingRepository::class)]
 class Booking
@@ -18,10 +19,23 @@ class Booking
     private ?Festival $festival = null;
 
     #[ORM\Column(length: 255)]
-    private ?string $email = null;
+    #[Assert\NotBlank(message: 'Email is required')]
+    #[Assert\Email(message: 'Email is not valid')]
+    private string $email;
 
     #[ORM\Column(length: 255)]
-    private ?string $fullName = null;
+    #[Assert\NotBlank(message: 'Full name is required')]
+    #[Assert\Length(
+        min: 2,
+        max: 255,
+        minMessage: 'Full name must be at least {{ limit }} characters long',
+        maxMessage: 'Full name cannot be longer than {{ limit }} characters'
+    )]
+    #[Assert\Regex(
+        pattern: '/^[a-zA-Z\s\-\'\.]+$/u',
+        message: 'Full name can only contain letters, spaces, hyphens, apostrophes, and dots'
+    )]
+    private string $fullName;
 
     public function getId(): ?int
     {

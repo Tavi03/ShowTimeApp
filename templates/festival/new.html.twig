@@ -1,4 +1,4 @@
-{% extends 'base.html.twig' %}
+{% extends 'layouts/base_admin.html.twig' %}
 
 {% block title %}New Festival{% endblock %}
 
@@ -7,5 +7,5 @@
 
     {{ include('festival/_form.html.twig') }}
 
-    <a href="{{ path('app_band_index') }}" class="btn btn-primary">Back To List</a>
+    <a href="{{ path('app_festival_index') }}" class="btn btn-secondary mx-2">Back To List</a>
 {% endblock %}
