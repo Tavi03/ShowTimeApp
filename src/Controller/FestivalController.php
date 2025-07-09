@@ -13,7 +13,7 @@ use Symfony\Component\Routing\Attribute\Route;
 
 final class FestivalController extends AbstractController
 {
-    #[Route('/festival', name: 'app_festival_index', methods: ['GET'])]
+    #[Route('/admin/festival', name: 'app_festival_index', methods: ['GET'])]
     public function index(FestivalRepository $festivalRepository): Response
     {
         return $this->render('festival/index.html.twig', [

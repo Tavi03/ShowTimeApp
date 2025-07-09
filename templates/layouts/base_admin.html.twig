@@ -17,10 +17,17 @@
     <div class="min-h-screen grid grid-cols-[250px_1fr]">
         <!-- Sidebar -->
         <aside class="bg-base-200 p-4">
-            <h2 class="text-xl font-bold mb-4">Admin</h2>
+            <div class="flex justify-between items-center">
+                <h2 class="text-xl font-bold">Admin</h2>
+                <a href="{{ path('app_logout') }}" class="btn">Logout</a>
+            </div>
+
+            <div class="divider"></div>
+
             <ul class="menu">
                 <li><a href="{{ path('app_band_index') }}">Bands</a></li>
                 <li><a href="{{ path('app_festival_index') }}">Festivals</a></li>
+                <li><a href="{{ path('app_admin_booking') }}">Bookings</a></li>
             </ul>
         </aside>
 

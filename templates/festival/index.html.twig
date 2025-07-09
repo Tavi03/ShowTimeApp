@@ -25,8 +25,8 @@
                 <td>{{ festival.id }}</td>
                 <td>{{ festival.name }}</td>
                 <td>{{ festival.location }}</td>
-                <td>{{ festival.startDate.format('d-m-Y') }}</td>
-                <td>{{ festival.endDate.format('d-m-Y') }}</td>
+                <td>{{ festival.startDate.format('j M Y') }}</td>
+                <td>{{ festival.endDate.format('j M Y') }}</td>
                 <td>
                     {% for band in festival.bands %}
                         <span class="badge badge-outline mr-1">{{ band.name }}</span>

@@ -1,0 +1,48 @@
+{% extends 'layouts/base_admin.html.twig' %}
+
+{% block title %}Bookings List{% endblock %}
+
+{% block content %}
+
+    <div class="">
+        <form action="{{ path('app_admin_booking') }}" method="get">
+            <div class="flex flex-row justify-end my-2">
+                <div class="mx-2">
+                    <label for="sort" hidden></label>
+                    <select id="sort" name="sort" class="select">
+                        <option disabled selected>Sort by</option>
+                        <option value="fullNameAscending">Name ascending</option>
+                        <option value="fullNameDescending">Name descending</option>
+                        {#                        <option value="bookDate">Book Date</option> #}
+                    </select>
+                </div>
+
+                <div class="mx-2">
+                    <label for="search" hidden></label>
+                    <input type="text" id="search" name="search" placeholder="Search by full name" class="input"
+                           value="{{ app.request.query.get('search') }}">
+                </div>
+
+                <button type="submit" class="btn btn-primary mx-2">Search</button>
+            </div>
+        </form>
+    </div>
+    <table class="table table-zebra w-full">
+        <tr>
+            <th>Id</th>
+            <th>Email</th>
+            <th>Full Name</th>
+            <th>Festival</th>
+        </tr>
+        {% for booking in bookings %}
+            <tr>
+                <td>{{ booking.id }}</td>
+                <td>{{ booking.email }}</td>
+                <td>{{ booking.fullName }}</td>
+                <td>{{ booking.festival.name }}</td>
+            </tr>
+        {% endfor %}
+    </table>
+{% endblock %}
+
+

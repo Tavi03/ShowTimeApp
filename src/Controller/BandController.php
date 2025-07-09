@@ -11,7 +11,7 @@ use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Attribute\Route;
 
-#[Route('/band')]
+#[Route('/admin/band')]
 final class BandController extends AbstractController
 {
     #[Route('/', name: 'app_band_index', methods: ['GET'])]
@@ -72,7 +72,7 @@ final class BandController extends AbstractController
     #[Route('/{id}', name: 'app_band_delete', methods: ['POST'])]
     public function delete(Request $request, Band $band, EntityManagerInterface $entityManager): Response
     {
-        if ($this->isCsrfTokenValid('delete'.$band->getId(), $request->getPayload()->getString('_token'))) {
+        if ($this->isCsrfTokenValid('delete' . $band->getId(), $request->getPayload()->getString('_token'))) {
             $entityManager->remove($band);
             $entityManager->flush();
         }

@@ -16,6 +16,25 @@ class BookingRepository extends ServiceEntityRepository
         parent::__construct($registry, Booking::class);
     }
 
+    //TODO: Add booking date and time and sorting system for it
+    public function findBookings(string $search, string $sort): array
+    {
+        $query = $this->createQueryBuilder('b');
+
+        if ($search) {
+            $query->where('b.fullName LIKE :search')
+                ->setParameter('search', '%' . $search . '%');
+        }
+
+        if ($sort == 'fullNameAscending') {
+            $query->orderBy('b.fullName', 'ASC');
+        } else if ($sort == 'fullNameDescending') {
+            $query->orderBy('b.fullName', 'DESC');
+        }
+
+        return $query->getQuery()->getResult();
+    }
+
 //    /**
 //     * @return Booking[] Returns an array of Booking objects
 //     */
