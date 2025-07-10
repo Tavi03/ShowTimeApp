@@ -7,6 +7,7 @@ use Doctrine\ORM\Mapping as ORM;
 use Symfony\Component\Validator\Constraints as Assert;
 
 #[ORM\Entity(repositoryClass: BookingRepository::class)]
+#[ORM\HasLifecycleCallbacks]
 class Booking
 {
     #[ORM\Id]
@@ -36,6 +37,15 @@ class Booking
         message: 'Full name can only contain letters, spaces, hyphens, apostrophes, and dots'
     )]
     private string $fullName;
+
+    #[ORM\Column(type: 'datetime')]
+    private \DateTime $bookedAt;
+
+    #[ORM\PrePersist]
+    public function setBookingTime(): void
+    {
+        $this->bookedAt = new \DateTime();
+    }
 
     public function getId(): ?int
     {
@@ -75,6 +85,17 @@ class Booking
     {
         $this->fullName = $fullName;
 
+        return $this;
+    }
+
+    public function getBookedAt(): \DateTime
+    {
+        return $this->bookedAt;
+    }
+
+    public function setBookedAt(\DateTime $bookedAt): static
+    {
+        $this->bookedAt = $bookedAt;
         return $this;
     }
 }

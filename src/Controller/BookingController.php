@@ -65,8 +65,6 @@ final class BookingController extends AbstractController
     {
         $search = $request->query->get('search', '');
         $sort = $request->query->get('sort', '');
-        dump($search, $sort);
-
 
         $bookings = $bookingRepository->findBookings($search, $sort);
 
